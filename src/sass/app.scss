@@ -52,9 +52,7 @@ ol {
     list-style: none!important;
 }
 
-#rain {
-    transform: rotateX(-90deg);
-}
+#rain {}
 
 svg {
     position: absolute;
@@ -63,7 +61,7 @@ svg {
 }
 
 .text {
-    fill: url(#p-fire);
+    fill: url(#rain);
     stroke: hotpink;
     stroke-width: 9;
     stroke-opacity: 1;
@@ -460,8 +458,30 @@ svg {
     height: 160px;
     border: 3px solid white;
     box-shadow: -1px 1px 18px 5px deeppink;
-    transform-origin: center left;
-    transition: all 1s ease-in-out;
+    transform-origin: top left;
+    transition: all .5s ease-in-out;
+}
+
+.shan-img-ani {
+    animation: shanliimage 2s ease-in-out;
+    @keyframes shanliimage {
+        30% {
+            transform: rotatex(30deg)rotatez(20deg);
+            filter: hue-rotate(180deg)
+        }
+        60% {
+            transform: rotateX(-30deg)rotateZ(-10deg);
+            filter: hue-rotate(360deg);
+        }
+        70% {
+            transform: rotatex(10deg)rotatez(10deg);
+            filter: hue-rotate(180deg)
+        }
+        80% {
+            transform: rotateX(-10deg)rotateZ(0deg);
+            filter: hue-rotate(360deg);
+        }
+    }
 }
 
 .btn-back {
@@ -850,7 +870,7 @@ svg {
     text-shadow: 1px 1px 3px #c2185b;
     white-space: wrap;
     word-wrap: break-word;
-    .shan-conversation-li {
+    .shan-conversation {
         display: inline-block;
         margin: auto;
         width: 100%;
