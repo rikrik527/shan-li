@@ -66,7 +66,7 @@ awake.command = {
             changeX = 0;
 
 
-        document.onmousemove = function(e) {
+        document.onmouseover = function(e) {
             var target = e.target;
             var shanLiImage = obj.getId('shan-li-image');
             var moveY = e.clientY / 10;
@@ -74,27 +74,29 @@ awake.command = {
             console.log(moveY, moveX)
             changeY += moveY;
             changeX += moveX;
+            console.log(changeY, changeX)
             var total = changeX - changeY * 0.5;
-            if (e.movementX > 0) {
-                var moveX = e.clientX / 10
-                console.log('right');
-            } else {
-                var moveX = e.clientX / 100;
-                console.log('left');
-            }
-            if (e.movementY < 0) {
-                var moveY = e.clientY / 10;
-                console.log('up')
-            } else {
-                var moveY = e.clientY / 100;
-                console.log('down');
-            }
+            // if (e.movementX > 0) {
+            //     moveX / 5
+            //     console.log('right', moveX);
+            // } else {
+            //     moveX / 10;
+            //     console.log('left', moveX);
+            // }
+            // if (e.movementY < 0) {
+            //     moveY / 5;
+            //     console.log('up')
+            // } else {
+            //     moveY / 10;
+            //     console.log('down');
+            // }
             if (target.id === "shan-li-image") {
                 console.log('pointed');
-                shanLiImage.style.cssText = 'filter:hue-rotate(180deg);transform:rotatex(' + moveX + ')rotatey(' + moveY + 'deg)';
+                shanLiImage.style.cssText = 'filter:hue-rotate(240deg);transform:rotatex(' + moveX + 'deg)rotatey(' + moveY + 'deg)rotatez(20deg)';
+                console.log(window.getComputedStyle(shanLiImage).getPropertyValue('rotateX'), moveX, moveY)
 
             } else {
-                shanLiImage.style.cssText = 'filter:hue-rotate(0deg);transform:rotate(0deg)';
+                shanLiImage.style.cssText = 'filter:hue-rotate(0deg);transform:rotatex(0deg)rotatey(0deg)';
             }
         }
 
@@ -448,6 +450,16 @@ awake.story = {
         shanBtn.className = 'shan-btn';
         var awakeFS = obj.get('.awake-first-section');
         awakeFS.insertAdjacentElement('afterbegin', shanBtn);
+    }
+}
+awake.call = {
+    shanLi: "<div class='shan-li-hair1'></div><div class='shan-li-hair2'></div><div class='shan-li-hair3'></div><div class='shan-li-head'><div class='shan-li-eyebrow'></div><div class='shan-li-eyebrow2'></div><div class='shan-li-eye'><div class='shan-li-eyeball'></div></div><div class='shan-li-eye2'><div class='shan-li-eyeball2'></div></div><div class='shan-li-nose'></div><div class='shan-li-lips'></div><div class='shan-li-mouth'><div class='shan-li-teeth'></div></div><div class='shan-li-lips2'></div></div><div class='shan-li-neck'></div><div class='shan-li-body'><div class='shan-li-mimi'></div><div class='shan-li-mimi2'></div></div><div class='shan-li-arm'></div><div class='shan-li-arm2'></div><div class='shan-li-lowarm'><div class='shan-li-hand'></div></div><div class='shan-li-lowarm2'><div class='shan-li-hand2'></div></div><div class='shan-li-stomache'></div><div class='shan-li-peegu'></div><div class='shan-li-leg'></div><div class='shan-li-leg2'></div><div class='shan-li-lowleg'><div class='shan-li-feet'></div></div><div class='shan-li-lowleg2'><div class='shan-li-feet2'></div></div><div class='shan-li-book'><div class='shan-li-book-left'></div><div class='shan-li-book-right'></div><div class='shan-li-book-middle'></div></div>",
+    shanAppear: function() {
+        var shanBtn = obj.get('.shan-btn');
+        shanBtn.insertAdjacentHTML('afterend', '<article class="shan-li-boxcontrol"></article>');
+        var shanBc = obj.get('.shan-li-boxcontrol');
+        shanBc.innerHTML = this.shanLi;
+
     }
 }
 awake.command.awakeFirst().style.transition = 'all 1s cubic-bezier(.58,-0.07,.99,-0.69)';
