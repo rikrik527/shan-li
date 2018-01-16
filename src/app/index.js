@@ -14,11 +14,13 @@ var shanTalking = require('./shanConversation');
 var location = require('./location');
 var awake = require('./spa');
 window.onload = function() {
+    awake.facebook.addScript();
     awake.story.shanBtn();
     awake.call.shanAppear();
+    awake.app.talkingDialog();
     awake.image.show();
     awake.video.section1();
-    awake.command.imageHueRotate();
+
     // awake.shanLiAwaken.story();
     awake.command.nameSvg();
     awake.command.add('canvas', 'canvas', 'new-canvas');
