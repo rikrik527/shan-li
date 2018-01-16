@@ -43,7 +43,7 @@ window.onload = function() {
     awake.button.select('.epilogue').onclick = function() {
         console.log('yesyeysyeysyeysyeyes');
     };
-    awake.command.imageHueRotate();
+
     awake.app.imageSlider();
     awake.app.todoList();
     awake.app.outouch();

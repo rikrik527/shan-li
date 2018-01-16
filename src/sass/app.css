@@ -24,7 +24,47 @@
 /* in text */
 /*fashion set 1 smooth*/
 /* kindle fire */
+@media screen and (min-width: 505px) and (max-width: 900px) {
+  .shan-btn {
+    margin: calc(-28.750em/2) 0 0 calc(-50.5em/2) !important;
+    width: 50.5em !important;
+    background-position-x: -100px !important; }
+
+  .img-slider-boxcontrol {
+    left: 69% !important; } }
 /*LG */
+@media screen and (min-width: 320px) and (max-width: 504px) {
+  .shan-btn {
+    width: 32.5em !important;
+    margin: calc(-28.750em/2) 0 0 calc(-32.5em/2) !important;
+    background-position-x: 52% !important; }
+
+  .shan-talk {
+    width: 32% !important;
+    top: 66% !important;
+    left: 13% !important; }
+
+  .img-slider-boxcontrol {
+    width: 28% !important;
+    height: 41% !important;
+    left: 60% !important; }
+
+  .img-outline {
+    left: 16% !important;
+    top: 6% !important; }
+
+  .right-arrow {
+    left: 93% !important;
+    animation: rightarrow .5s linear infinite; }
+  @keyframes rightarrow {
+    50% {
+      left: 90% !important; } }
+  .left-arrow {
+    left: 3% !important;
+    animation: leftarrow .5s linear infinite; }
+  @keyframes leftarrow {
+    50% {
+      left: 6% !important; } } }
 /* iphonex */
 /* iphone 6 6s 7 8 */
 /* samsung */
@@ -7385,16 +7425,13 @@ ol {
   padding: 0;
   list-style: none !important; }
 
-#rain {
-  transform: rotateX(-90deg); }
-
 svg {
   position: absolute;
   width: 100%;
   height: 100%; }
 
 .text {
-  fill: url(#p-fire);
+  fill: url(#rain);
   stroke: hotpink;
   stroke-width: 9;
   stroke-opacity: 1; }
@@ -7735,9 +7772,24 @@ svg {
   height: 160px;
   border: 3px solid white;
   box-shadow: -1px 1px 18px 5px deeppink;
-  transform-origin: center left;
-  transition: all 1s ease-in-out; }
+  transform-origin: top left;
+  transition: all .5s ease-in-out; }
 
+.shan-img-ani {
+  animation: shanliimage 2s ease-in-out; }
+@keyframes shanliimage {
+  30% {
+    transform: rotatex(30deg) rotatez(20deg);
+    filter: hue-rotate(180deg); }
+  60% {
+    transform: rotateX(-30deg) rotateZ(-10deg);
+    filter: hue-rotate(360deg); }
+  70% {
+    transform: rotatex(10deg) rotatez(10deg);
+    filter: hue-rotate(180deg); }
+  80% {
+    transform: rotateX(-10deg) rotateZ(0deg);
+    filter: hue-rotate(360deg); } }
 .btn-back {
   position: fixed;
   bottom: 4%;
@@ -8119,7 +8171,7 @@ svg {
   text-shadow: 1px 1px 3px #c2185b;
   white-space: wrap;
   word-wrap: break-word; }
-  .shan-talk .shan-conversation-li {
+  .shan-talk .shan-conversation {
     display: inline-block;
     margin: auto;
     width: 100%;

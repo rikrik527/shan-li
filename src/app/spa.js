@@ -13,6 +13,7 @@ awake.image = {
     show: function() {
         var shanli = obj.getId('shan-li-image');
         shanli.src = source;
+
         shanli.onmouseover = function() {
             shanli.classList.add('shan-img-ani');
         }
