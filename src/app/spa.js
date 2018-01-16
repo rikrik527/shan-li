@@ -13,6 +13,12 @@ awake.image = {
     show: function() {
         var shanli = obj.getId('shan-li-image');
         shanli.src = source;
+        shanli.onmouseover = function() {
+            shanli.classList.add('shan-img-ani');
+        }
+        shanli.onmouseout = function() {
+            shanli.classList.remove('shan-img-ani');
+        }
 
     }
 }
@@ -61,53 +67,53 @@ awake.command = {
         return obj.get('.epilogue-first-section');
     },
 
-    imageHueRotate: function() {
-        var changeY = 0,
-            changeX = 0;
+    // imageHueRotate: function() {
+    //     var changeY = 0,
+    //         changeX = 0;
 
 
-        document.onmouseover = function(e) {
-            var target = e.target;
-            var shanLiImage = obj.getId('shan-li-image');
-            var moveY = e.clientY / 10;
-            var moveX = e.clientX / 10;
-            console.log(moveY, moveX)
-            changeY += moveY;
-            changeX += moveX;
-            console.log(changeY, changeX)
-            var total = changeX - changeY * 0.5;
-            // if (e.movementX > 0) {
-            //     moveX / 5
-            //     console.log('right', moveX);
-            // } else {
-            //     moveX / 10;
-            //     console.log('left', moveX);
-            // }
-            // if (e.movementY < 0) {
-            //     moveY / 5;
-            //     console.log('up')
-            // } else {
-            //     moveY / 10;
-            //     console.log('down');
-            // }
-            if (target.id === "shan-li-image") {
-                console.log('pointed');
-                shanLiImage.style.cssText = 'filter:hue-rotate(240deg);transform:rotatex(' + moveX + 'deg)rotatey(' + moveY + 'deg)rotatez(20deg)';
-                console.log(window.getComputedStyle(shanLiImage).getPropertyValue('rotateX'), moveX, moveY)
+    //     document.onmouseover = function(e) {
+    //         var target = e.target;
+    //         var shanLiImage = obj.getId('shan-li-image');
+    //         var moveY = e.clientY / 10;
+    //         var moveX = e.clientX / 10;
+    //         console.log(moveY, moveX)
+    //         changeY += moveY;
+    //         changeX += moveX;
+    //         console.log(changeY, changeX)
+    //         var total = changeX - changeY * 0.5;
+    // if (e.movementX > 0) {
+    //     moveX / 5
+    //     console.log('right', moveX);
+    // } else {
+    //     moveX / 10;
+    //     console.log('left', moveX);
+    // }
+    // if (e.movementY < 0) {
+    //     moveY / 5;
+    //     console.log('up')
+    // } else {
+    //     moveY / 10;
+    //     console.log('down');
+    // }
+    //     if (target.id === "shan-li-image") {
+    //         console.log('pointed');
+    //         shanLiImage.style.cssText = 'filter:hue-rotate(240deg);transform:rotatex(' + moveX + 'deg)rotatey(' + moveY + 'deg)rotatez(20deg)';
+    //         console.log(window.getComputedStyle(shanLiImage).getPropertyValue('rotateX'), moveX, moveY)
 
-            } else {
-                shanLiImage.style.cssText = 'filter:hue-rotate(0deg);transform:rotatex(0deg)rotatey(0deg)';
-            }
-        }
-
-
+    //     } else {
+    //         shanLiImage.style.cssText = 'filter:hue-rotate(0deg);transform:rotatex(0deg)rotatey(0deg)';
+    //     }
+    // }
 
 
 
-    },
+
+
+    // },
 
     nameSvg: function() {
-        var svg = '<svg width="150" height="200" viewBox="0 0 300 900"><pattern id="rain" viewBox="100 100 100 100" patternUnits="userSpaceOnUse" width="150" height="200" x="0" y="150"><image xlink:href="https://www.mrjudo.000webhostapp.com/public/assets/images/" width="100" height="150"/></pattern><text text-anchor="middle" x="50%" y="50%" dy=".35em" class="text">雨珊</text></svg>';
+        var svg = '<svg width="150" height="200" viewBox="0 0 300 900"><pattern id="rain" viewBox="100 100 100 100" patternUnits="userSpaceOnUse" width="150" height="200" x="0" y="150"><image xlink:href="https://github.com/rikrik527/shan-li/src/images/rain.gif" width="100" height="150"/></pattern><text text-anchor="middle" x="50%" y="50%" dy=".35em" class="text">雨珊</text></svg>';
         var imgShan = obj.get('.the-game');
         imgShan.innerHTML = svg;
 
@@ -336,18 +342,7 @@ awake.app = {
 
 
         },
-        onTouch: function(e) {
 
-            var imgOutline = obj.get('.img-outline');
-            document.ontouchstart = function(e) {
-                var touch = e.touches[0].target;
-                console.log(touch);
-                if (touch.className == 'shan-li-boxcontrol') {
-                    alert('found she');
-                }
-
-            }
-        },
         todoContainer: '<div id="my-div" class="header"><h2 style:"margin:5px">To Do List</h2><input type="text" class="input-todo id="my-input" placeholder="Title.."><span class="add-btn">Add</span></div><ul id="my-ul"><li class="checked">Add your todo list</li><li>example..</li></ul>',
         todoList: function() {
             var todoL = obj.get('.todo-list');
@@ -421,6 +416,18 @@ awake.app = {
                 }
             }
 
+        },
+
+        talkingDialog: function() {
+            var div = obj.create('div');
+            var div2 = obj.create('div');
+            div.className = 'shan-talk';
+            div2.className = 'shan-conversation';
+            var shanBtn = obj.get('.shan-btn');
+            shanBtn.appendChild(div);
+            div.appendChild(div2);
+
+
         }
     }
     // awake.canvas = {
@@ -460,6 +467,15 @@ awake.call = {
         var shanBc = obj.get('.shan-li-boxcontrol');
         shanBc.innerHTML = this.shanLi;
 
+    }
+}
+awake.facebook = {
+    jquery: "//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js",
+    addScript: function() {
+        var script = obj.create('script');
+        script.src = this.jquery;
+        var head = document.getElementsByTagName('head')[0];
+        head.appendChild(script);
     }
 }
 awake.command.awakeFirst().style.transition = 'all 1s cubic-bezier(.58,-0.07,.99,-0.69)';
